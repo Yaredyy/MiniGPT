@@ -5,7 +5,7 @@ import torch.nn.functional as F
 from model import MiniGPT, encode, decode, device, vocab_size
 
 # Config
-block_size = 8
+block_size = 16
 
 # Load model
 model = MiniGPT(vocab_size=vocab_size, block_size=block_size).to(device)
@@ -24,7 +24,8 @@ def generate(idx, max_new_tokens):
     return idx
 
 # Start generation
-start = torch.tensor([[encode('i')[0]]], device=device)
+prompt = "i like "
+start = torch.tensor([encode(prompt)], device=device)
 out = generate(start, 50)
 for i in out:
     print(decode(i.tolist()))
