@@ -31,11 +31,19 @@ def estimate_loss():
     model.train()
     return losses.mean()
 
+best_loss = float('inf')  # track best validation loss
 
 # Training
 for step in range(max_iters):
     if step % eval_interval == 0:
-        print(f"Step {step}, loss = {estimate_loss():.4f}")
+        val_loss = estimate_loss()
+        print(f"Step {step}, loss = {val_loss:.4f}")
+        
+        # Save best model if validation loss improved
+        if val_loss < best_loss:
+            best_loss = val_loss
+            torch.save(model.state_dict(), 'minigpt_best.pth')
+            print(f"Saved new best model at step {step} with loss {val_loss:.4f}")
     
     x_batch, y_batch = get_batch(data, block_size, batch_size)
     logits = model(x_batch)
@@ -46,5 +54,5 @@ for step in range(max_iters):
     loss.backward()
     optimizer.step()
 
-# Save model
-torch.save(model.state_dict(), 'minigpt.pth')
+# Optionally save final model as well
+torch.save(model.state_dict(), 'minigpt_final.pth')

@@ -9,7 +9,7 @@ block_size = 64
 
 # Load model
 model = MiniGPT(vocab_size=vocab_size, block_size=block_size).to(device)
-model.load_state_dict(torch.load('minigpt.pth'))
+model.load_state_dict(torch.load('minigpt_best.pth'))
 model.eval()
 
 @torch.no_grad()
