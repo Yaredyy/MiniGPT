@@ -5,7 +5,7 @@ import torch.nn.functional as F
 from model import MiniGPT, encode, decode, device, vocab_size
 
 # Config
-block_size = 16
+block_size = 64
 
 # Load model
 model = MiniGPT(vocab_size=vocab_size, block_size=block_size).to(device)

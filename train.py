@@ -6,14 +6,14 @@ import torch.nn.functional as F
 from model import MiniGPT, get_batch, encode, decode, device, vocab_size, data
 
 # Config
-batch_size = 16
+batch_size = 64
 block_size = 16
 max_iters = 2000
 eval_interval = 100
 learning_rate = 5e-3
 eval_iters = 20
 
-model = MiniGPT(vocab_size=vocab_size, block_size=block_size).to(device)
+model = MiniGPT(vocab_size=vocab_size, block_size=block_size, n_embd=64, n_head=4, n_layer=4).to(device)
 optimizer = torch.optim.AdamW(model.parameters(), lr=learning_rate)
 
 @torch.no_grad()
