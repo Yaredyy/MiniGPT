@@ -6,11 +6,11 @@ import torch.nn.functional as F
 from model import MiniGPT, get_batch, encode, decode, device, vocab_size, data
 
 # Config
-batch_size = 4
-block_size = 8
-max_iters = 300
+batch_size = 16
+block_size = 16
+max_iters = 2000
 eval_interval = 100
-learning_rate = 1e-2
+learning_rate = 5e-3
 eval_iters = 20
 
 model = MiniGPT(vocab_size=vocab_size, block_size=block_size).to(device)
@@ -28,7 +28,9 @@ def estimate_loss():
         Y = Y.view(B * T)
         loss = F.cross_entropy(logits, Y)
         losses[k] = loss.item()
+    model.train()
     return losses.mean()
+
 
 # Training
 for step in range(max_iters):

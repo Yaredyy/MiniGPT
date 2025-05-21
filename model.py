@@ -4,7 +4,12 @@ import torch
 import torch.nn as nn
 
 # Sample data and vocab
-text = "i like pizza and you like pasta"
+text = (
+    "i like pizza and you like pasta. "
+    "we all enjoy tasty food like sushi, ramen, burgers, and fries. "
+    "sometimes i eat spicy curry or sweet desserts. "
+    "food makes us happy and full."
+)
 chars = sorted(list(set(text)))
 stoi = {ch: i for i, ch in enumerate(chars)}
 itos = {i: ch for ch, i in stoi.items()}
@@ -23,12 +28,14 @@ def get_batch(data, block_size, batch_size):
 class MiniGPT(nn.Module):
     def __init__(self, vocab_size, block_size):
         super().__init__()
-        self.token_embed = nn.Embedding(vocab_size, 32)
-        self.position_embed = nn.Embedding(block_size, 32)
-        self.lm_head = nn.Linear(32, vocab_size)
+        self.token_embed = nn.Embedding(vocab_size, 64)
+        self.position_embed = nn.Embedding(block_size, 64)
+        self.l1 = nn.Linear(64, 64)
+        self.lm_head = nn.Linear(64, vocab_size)
 
     def forward(self, x):
         tok = self.token_embed(x)
         pos = self.position_embed(torch.arange(x.size(1), device=x.device))
         out = tok + pos
+        out = torch.relu(self.l1(out))
         return self.lm_head(out)
