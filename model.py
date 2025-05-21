@@ -8,8 +8,21 @@ text = (
     "i like pizza and you like pasta. "
     "we all enjoy tasty food like sushi, ramen, burgers, and fries. "
     "sometimes i eat spicy curry or sweet desserts. "
-    "food makes us happy and full."
+    "food makes us happy and full. "
+    "he prefers salads with grilled chicken or avocado. "
+    "breakfast often includes pancakes, eggs, and orange juice. "
+    "ice cream on a hot day is the best treat. "
+    "she loves cooking homemade lasagna for dinner. "
+    "we tried dumplings and noodles from the new restaurant. "
+    "healthy snacks like apples and almonds are great. "
+    "everyone has a favorite dish that reminds them of home. "
+    "cheese melts perfectly on top of hot nachos. "
+    "drinking water and staying hydrated is important. "
+    "baking cookies with chocolate chips is fun. "
+    "every meal tells a story and brings people together. "
+    "some days we crave salty popcorn or buttery toast."
 )
+
 chars = sorted(list(set(text)))
 stoi = {ch: i for i, ch in enumerate(chars)}
 itos = {i: ch for ch, i in stoi.items()}
