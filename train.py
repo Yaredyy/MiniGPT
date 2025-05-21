@@ -7,7 +7,7 @@ from model import MiniGPT, get_batch, encode, decode, device, vocab_size, data
 
 # Config
 batch_size = 64
-block_size = 16
+block_size = 64
 max_iters = 2000
 eval_interval = 100
 learning_rate = 5e-3
