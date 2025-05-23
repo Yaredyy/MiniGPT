@@ -24,7 +24,7 @@ def generate(idx, max_new_tokens):
     return idx
 
 # Start generation
-prompt = "i like "
+prompt = "no one likes "
 start = torch.tensor([encode(prompt)], device=device)
 out = generate(start, 50)
 for i in out:
