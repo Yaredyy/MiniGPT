@@ -30,7 +30,7 @@ chars = sorted(list(set(text)))
 stoi = {ch: i for i, ch in enumerate(chars)}
 itos = {i: ch for ch, i in stoi.items()}
 vocab_size = len(chars)
-encode = lambda s: [stoi[c] for c in s]
+encode = lambda s: [stoi[c] for c in (s.lower())]
 decode = lambda l: ''.join([itos[i] for i in l])
 data = torch.tensor(encode(text), dtype=torch.long)
 device = 'cuda' if torch.cuda.is_available() else 'cpu'

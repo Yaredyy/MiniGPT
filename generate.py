@@ -9,7 +9,7 @@ block_size = 64
 
 # Load model
 model = MiniGPT(vocab_size=vocab_size, block_size=block_size).to(device)
-model.load_state_dict(torch.load('minigpt_best.pth'))
+model.load_state_dict(torch.load('minigpt_final.pth'))
 model.eval()
 
 @torch.no_grad()
@@ -24,7 +24,7 @@ def generate(idx, max_new_tokens):
     return idx
 
 # Start generation
-prompt = "no one likes "
+prompt = "I like "
 start = torch.tensor([encode(prompt)], device=device)
 out = generate(start, 50)
 for i in out:
