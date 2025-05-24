@@ -24,8 +24,13 @@ def generate(idx, max_new_tokens):
     return idx
 
 # Start generation
-prompt = "I like "
-start = torch.tensor([encode(prompt)], device=device)
-out = generate(start, 50)
-for i in out:
-    print(decode(i.tolist()))
+prompt=""
+print("Enter text.")
+prompt=input()
+while prompt!="exit":
+    start = torch.tensor([encode(prompt)], device=device)
+    out = generate(start, 50)
+    for i in out:
+        print(decode(i.tolist()))
+    print("Enter next text.")
+    prompt=input()
