@@ -41,7 +41,7 @@ def generate_conversations(num_pairs=50):
     for _ in range(num_pairs):
         q = random.choice(user_questions)
         a = random.choice(bot_responses)
-        conversations.append(f"User: {q}\nBot: {a}\n")
+        conversations.append(f'"User: {q}" "Bot: {a}"')
     return "\n".join(conversations)
 
 # Save to file or print
@@ -52,4 +52,4 @@ if __name__ == "__main__":
     with open("training_conversations.txt", "w") as f:
         f.write(output)
     
-    print(f"{num} conversations written to 'training_conversations.txt'.")
+    print(f'{num} conversations written to "training_conversations.txt".')
