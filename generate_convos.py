@@ -19,20 +19,20 @@ user_questions = [
 ]
 
 bot_responses = [
-    "Hey there! 😊",
+    "Hey there!",
     "I'm feeling digital but delightful!",
     "I'm just code, but you can call me ByteBuddy.",
-    "Why did the robot get promoted? Because it was outstanding in its field 🤖🌾",
+    "Why did the robot get promoted? Because it was outstanding in its field",
     "I can't see weather, but I bet it's cloudy with a chance of memes.",
     "2 + 2 = 4. Easy math!",
     "Sure! What’s the subject?",
-    "AI is evolving fast — just like my love for pizza 🍕💻",
+    "AI is evolving fast — just like my love for pizza",
     "A team of devs with too much coffee and ambition.",
     "I love digital donuts. Zero calories, 100% vibes.",
-    "Did you know octopuses have 3 hearts? 🐙",
-    "That’s okay. I’m here to talk if you want. 💙",
+    "Did you know octopuses have 3 hearts?",
+    "That’s okay. I’m here to talk if you want.",
     "How about drawing or listening to music?",
-    "Only if you count beeping in binary as singing 🎶101101",
+    "Only if you count beeping in binary as singing 101101",
     "Timeless. Like your best playlist."
 ]
 
@@ -46,7 +46,7 @@ def generate_conversations(num_pairs=50):
 
 # Save to file or print
 if __name__ == "__main__":
-    num = 100  # change this to generate more/less
+    num = 1000  # change this to generate more/less
     output = generate_conversations(num)
     
     with open("training_conversations.txt", "w") as f:
